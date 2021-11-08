@@ -6,9 +6,9 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
-
+require('dotenv').config()
 const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://aaahana:<password>@cluster0.j2f4s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = process.env.MONGOURI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
     const collection = client.db("player")
